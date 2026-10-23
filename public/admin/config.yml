@@ -1,0 +1,129 @@
+# Decap CMS — administração de conteúdo da ACEG.
+# ATENÇÃO: o painel só funciona depois de configurar a autenticação (OAuth do GitHub).
+# Passo a passo no README ("Administração de conteúdo"). Enquanto isso, edite os arquivos de /content.
+backend:
+  name: github
+  repo: vinisousa95/ACEG
+  branch: main
+  # base_url: https://URL-DO-SEU-SERVIDOR-OAUTH   # <- preencher ao ativar o login
+locale: pt
+media_folder: public/images
+public_folder: /images
+publish_mode: editorial_workflow   # rascunho → revisão → publicação
+
+collections:
+  - name: noticias
+    label: Notícias e eventos
+    label_singular: Publicação
+    folder: content/noticias
+    extension: md
+    create: true
+    slug: "{{slug}}"
+    summary: "{{titulo}} — {{data}}"
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: data, label: Data de publicação, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ", date_format: "DD/MM/YYYY", time_format: "HH:mm" }
+      - { name: tipo, label: Tipo, widget: select, options: [{label: Notícia, value: noticia}, {label: Evento, value: evento}, {label: Ação social, value: acao}, {label: Comunicado institucional, value: comunicado}] }
+      - { name: dataEvento, label: Data do evento (somente para eventos), widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ", required: false }
+      - { name: resumo, label: Resumo (aparece nos cartões), widget: text }
+      - { name: imagem, label: Imagem de destaque, widget: image, required: false }
+      - { name: imagemAlt, label: Descrição da imagem (acessibilidade), widget: string, required: false }
+      - { name: projeto, label: Projeto relacionado (identificador), widget: string, required: false }
+      - { name: tags, label: Temas, widget: list, required: false }
+      - { name: body, label: Texto, widget: markdown }
+
+  - name: projetos
+    label: Projetos
+    label_singular: Projeto
+    folder: content/projetos
+    extension: md
+    create: true
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: categoria, label: Categoria, widget: select, options: [{label: Educação, value: educacao}, {label: Oficinas e capacitação, value: oficinas}, {label: Sustentabilidade e produtos sociais, value: sustentabilidade}, {label: Desenvolvimento comunitário, value: comunidade}, {label: Cultura e eventos, value: cultura}] }
+      - { name: situacao, label: Situação, widget: select, options: [{label: Atividade atual, value: atual}, {label: Projeto histórico, value: historico}] }
+      - { name: resumo, label: Resumo, widget: text }
+      - { name: icone, label: Ícone, widget: select, options: [book-open, baby, scissors, sprout, heart-handshake, flower-2, party-popper, heart, users, house], default: heart }
+      - { name: ordem, label: Ordem de exibição, widget: number, value_type: int, default: 50 }
+      - { name: periodo, label: Período, widget: string, required: false }
+      - { name: publico, label: Público atendido (somente se confirmado), widget: text, required: false }
+      - { name: objetivos, label: Objetivos, widget: list, required: false }
+      - { name: oQueOferece, label: O que o projeto oferece, widget: list, required: false }
+      - { name: resultados, label: Resultados verificados, widget: list, required: false }
+      - { name: imagem, label: Imagem de destaque, widget: image, required: false }
+      - { name: imagemAlt, label: Descrição da imagem, widget: string, required: false }
+      - { name: noticias, label: Notícias relacionadas (identificadores), widget: list, required: false }
+      - { name: participar, label: Como participar, widget: text, required: false }
+      - { name: body, label: Descrição completa, widget: markdown }
+
+  - name: unidades
+    label: Unidades
+    label_singular: Unidade
+    folder: content/unidades
+    extension: md
+    create: true
+    fields:
+      - { name: titulo, label: Nome da unidade, widget: string }
+      - { name: tipo, label: Tipo, widget: select, options: [{label: Creche, value: creche}, {label: Sede social, value: sede}, {label: Unidade social, value: social}] }
+      - { name: ordem, label: Ordem, widget: number, value_type: int, default: 50 }
+      - { name: resumo, label: Resumo, widget: text }
+      - { name: descricao, label: Descrição, widget: text }
+      - { name: bairro, label: Bairro, widget: string, required: false }
+      - { name: endereco, label: Endereço confirmado (exibição), widget: string, required: false }
+      - { name: enderecoMapa, label: Endereço para mapa e rotas, widget: string, required: false }
+      - { name: complemento, label: Complemento, widget: string, required: false }
+      - { name: telefones, label: Telefones, widget: list, required: false }
+      - { name: cnpj, label: CNPJ da unidade, widget: string, required: false }
+      - { name: imagem, label: Foto da unidade, widget: image, required: false }
+      - { name: imagemAlt, label: Descrição da foto, widget: string, required: false }
+      - { name: documentos, label: Documentos (identificadores), widget: list, required: false }
+      - { name: body, label: Texto, widget: markdown, required: false }
+
+  - name: documentos
+    label: Transparência — documentos
+    label_singular: Documento
+    folder: content/documentos
+    extension: md
+    create: true
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: categoria, label: Categoria, widget: select, options: [{label: Documentos institucionais, value: institucionais}, {label: Estatuto social, value: estatuto}, {label: Editais, value: editais}, {label: Relatórios de atividades, value: relatorios}, {label: Prestação de contas, value: prestacao-de-contas}, {label: Convênios, value: convenios}, {label: Parcerias institucionais, value: parcerias}] }
+      - { name: ano, label: Ano, widget: number, value_type: int }
+      - { name: data, label: Data do documento, widget: string, required: false }
+      - { name: descricao, label: Descrição, widget: text }
+      - { name: arquivo, label: Arquivo PDF, widget: file, media_folder: "/public/documents", public_folder: "/documents" }
+
+  - name: galeria
+    label: Galeria de fotos
+    label_singular: Foto
+    folder: content/galeria
+    extension: md
+    create: true
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: categoria, label: Categoria, widget: select, options: [{label: Projetos, value: projetos}, {label: Eventos, value: eventos}, {label: Unidades, value: unidades}, {label: Oficinas, value: oficinas}, {label: Ações comunitárias, value: acoes}] }
+      - { name: data, label: Data, widget: string, required: false }
+      - { name: imagem, label: Imagem (somente com autorização de uso), widget: image }
+      - { name: alt, label: Descrição da imagem (acessibilidade), widget: string }
+      - { name: legenda, label: Legenda, widget: string, required: false }
+
+  - name: configuracoes
+    label: Configurações
+    files:
+      - name: indicadores
+        label: Indicadores de impacto
+        file: content/configuracoes/indicadores.json
+        fields:
+          - label: Indicadores
+            name: indicadores
+            widget: list
+            fields:
+              - { name: id, label: Identificador, widget: string }
+              - { name: valor, label: Valor, widget: number, value_type: int }
+              - { name: sufixo, label: Sufixo, widget: string, required: false }
+              - { name: rotulo, label: Rótulo, widget: string }
+              - { name: contexto, label: Contexto (período, definição), widget: text }
+              - { name: fonte, label: Fonte verificável, widget: string }
+              - { name: tema, label: Cor, widget: select, options: [azul, verde, amarelo, vermelho] }
+              - { name: formato, label: Formato, widget: select, options: [numero, ano], required: false }
+              - { name: status, label: "Status (só 'confirmado' aparece no site)", widget: select, options: [confirmado, pendente] }

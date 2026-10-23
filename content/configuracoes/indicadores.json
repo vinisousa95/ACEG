@@ -1,0 +1,85 @@
+{
+  "indicadores": [
+    {
+      "id": "unidades-educacao-infantil",
+      "valor": 5,
+      "sufixo": "",
+      "rotulo": "unidades de educação infantil",
+      "contexto": "CEI Pequenos Gênios, II, III, Flores e Topázio, identificadas nos editais de bolsas de estudo social de 2022.",
+      "fonte": "Editais nº 01/2022 (documentos públicos).",
+      "tema": "azul",
+      "status": "confirmado"
+    },
+    {
+      "id": "sede-social",
+      "valor": 1,
+      "sufixo": "",
+      "rotulo": "sede social",
+      "contexto": "Base da associação, na Rua Dapoli, em Piraporinha de Santo Amaro.",
+      "fonte": "Página de contato do site anterior.",
+      "tema": "vermelho",
+      "status": "confirmado"
+    },
+    {
+      "id": "oficinas-artesanato",
+      "valor": 4,
+      "sufixo": "",
+      "rotulo": "modalidades de oficinas de artesanato",
+      "contexto": "Crochê, costura, pintura e bordado, com turmas em andamento em novembro de 2025.",
+      "fonte": "Publicação de 27/11/2025.",
+      "tema": "verde",
+      "status": "confirmado"
+    },
+    {
+      "id": "inicio-do-projeto",
+      "valor": 2009,
+      "sufixo": "",
+      "rotulo": "ano em que o sonho de Eugênio Góes começou a virar realidade",
+      "contexto": "Pelas mãos de sua filha, Ana Maria Goes dos Santos.",
+      "fonte": "Página Sobre nós do site anterior.",
+      "tema": "amarelo",
+      "formato": "ano",
+      "status": "confirmado"
+    },
+    {
+      "id": "creches",
+      "valor": 8,
+      "sufixo": "",
+      "rotulo": "creches",
+      "contexto": "Número citado no material de identidade visual. Os editais nomeiam 5 unidades.",
+      "fonte": "Guia de Identidade Visual (cartão '8 creches').",
+      "tema": "azul",
+      "status": "pendente"
+    },
+    {
+      "id": "atendimentos",
+      "valor": 1120,
+      "sufixo": "",
+      "rotulo": "atendimentos",
+      "contexto": "Período e definição de 'atendimento' não informados.",
+      "fonte": "Guia de Identidade Visual (cartão '1.120').",
+      "tema": "vermelho",
+      "status": "pendente"
+    },
+    {
+      "id": "funcionarios",
+      "valor": 200,
+      "sufixo": "",
+      "rotulo": "funcionários",
+      "contexto": "Data de referência e vínculo (CLT, voluntários etc.) não informados.",
+      "fonte": "Guia de Identidade Visual (cartão '200 funcionários').",
+      "tema": "verde",
+      "status": "pendente"
+    },
+    {
+      "id": "anos-de-historia",
+      "valor": 30,
+      "sufixo": " anos",
+      "rotulo": "de história",
+      "contexto": "O site anterior cita a formação do grupo na década de 1990 e o início do projeto em 2009; é preciso definir o marco oficial.",
+      "fonte": "Guia de Identidade Visual (cartão '30 anos').",
+      "tema": "amarelo",
+      "status": "pendente"
+    }
+  ]
+}

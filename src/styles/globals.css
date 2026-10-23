@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens ACEG — extraídos do Guia de Identidade Visual oficial
+   ------------------------------------------------------------------ */
+@theme {
+  /* Cores principais */
+  --color-abraco: #c62e2b; /* Vermelho Abraço — ações principais e apoio */
+  --color-comunidade: #1f6aa8; /* Azul Comunidade — educação e informação institucional */
+  --color-semente: #35802a; /* Verde Semente — oficinas, sustentabilidade, produtos sociais */
+  --color-sol: #f4b823; /* Amarelo Sol — eventos e destaques (sempre com texto Tinta) */
+  --color-tinta: #2a2320; /* Tinta — texto */
+
+  /* Complementares */
+  --color-creme: #fff7e8; /* Creme Casa — fundo predominante */
+  --color-areia: #f1e4cc;
+  --color-rosa: #fbe3e1;
+  --color-ceu: #dcebf7;
+  --color-folha: #e3f1da;
+
+  /* Derivados funcionais (contraste verificado sobre creme/branco) */
+  --color-tinta-suave: #5a4e48;
+  --color-borda: #e8dcc6;
+  --color-abraco-escuro: #a52421;
+  --color-comunidade-escuro: #17507f;
+  --color-semente-escuro: #2a6621;
+
+  /* Tipografia */
+  --font-display: "Baloo 2 Variable", "Baloo 2", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Nunito Sans Variable", "Nunito Sans", system-ui, sans-serif;
+
+  /* Escala tipográfica responsiva */
+  --text-display: clamp(2.5rem, 1.55rem + 4.4vw, 4.75rem);
+  --text-h1: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+  --text-h2: clamp(1.75rem, 1.35rem + 1.9vw, 2.75rem);
+  --text-h3: clamp(1.3rem, 1.15rem + 0.7vw, 1.65rem);
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --text-number: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+
+  /* Forma */
+  --radius-card: 28px;
+  --radius-card-lg: 40px;
+
+  /* Sombras suaves */
+  --shadow-soft: 0 1px 2px rgb(42 35 32 / 0.04), 0 8px 24px -8px rgb(42 35 32 / 0.1);
+  --shadow-lift: 0 2px 4px rgb(42 35 32 / 0.05), 0 18px 36px -12px rgb(42 35 32 / 0.18);
+
+  /* Ponto de quebra do menu */
+  --breakpoint-nav: 72rem;
+  --breakpoint-xs: 30rem;
+
+  --animate-rise: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(18px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--color-creme);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: var(--text-h1);
+  }
+  h2 {
+    font-size: var(--text-h2);
+  }
+  h3 {
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-comunidade);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--color-sol);
+    color: var(--color-tinta);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-aceg {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .container-aceg {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .container-aceg {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .section-y {
+    padding-block: clamp(3.5rem, 2.4rem + 5vw, 7rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .lead {
+    font-size: var(--text-lead);
+    line-height: 1.55;
+    font-weight: 600;
+    color: var(--color-tinta-suave);
+  }
+
+  /* Prosa (conteúdo editorial em Markdown) */
+  .prose-aceg {
+    max-width: 42rem;
+  }
+  .prose-aceg > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-aceg h2 {
+    font-size: var(--text-h3);
+    margin-top: 1.8em;
+  }
+  .prose-aceg h3 {
+    font-size: 1.2rem;
+    margin-top: 1.5em;
+  }
+  .prose-aceg ul {
+    list-style: none;
+    padding: 0;
+  }
+  .prose-aceg ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .prose-aceg ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+    background: var(--color-sol);
+  }
+  .prose-aceg a {
+    color: var(--color-comunidade);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  .prose-aceg strong {
+    font-weight: 800;
+  }
+
+  /* Revelação suave ao rolar: só atua com JS e sem prefers-reduced-motion */
+  @media (prefers-reduced-motion: no-preference) {
+    html.anim .reveal:not([data-in]) {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    html.anim .reveal {
+      transition:
+        opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+        transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+  }
+}
+
+/* Barra de rolagem de filtros sem aparência de barra */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
